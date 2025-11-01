@@ -1,0 +1,39 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: tp2-ml-job
+  namespace: viniciusabel
+spec:
+  template:
+    spec:
+      containers:
+      - name: tp2-ml-container
+        # A imagem do ML
+        image: viniciustda/tp2-ml:0.1
+        # A variável de ambiente que diz ao script onde ler o dataset
+        env:
+        - name: DATASET_PATH
+          value: /data/2023_spotify_ds1.csv
+        
+        volumeMounts:
+        # Onde o modelo será salvo ( PVC)
+        - name: model-storage
+          mountPath: /model/
+        # Onde o dataset será lido (pasta da VM)
+        - name: dataset-storage
+          mountPath: /data/
+          
+      volumes:
+      # Conecta ao PVC
+      - name: model-storage
+        persistentVolumeClaim:
+          claimName: tp2-pvc
+      # Conecta à pasta da VM (HostPath)
+      - name: dataset-storage
+        hostPath:
+          path: /home/datasets/spotify
+          type: Directory
+      # Um Job não reinicia se falhar
+      restartPolicy: Never
+      
+  backoffLimit: 1

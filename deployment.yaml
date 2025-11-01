@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tp2-api-deployment
+  namespace: viniciusabel
+  labels:
+    app: tp2-api # Rótulo para o deployment
+spec:
+  replicas: 1 # Quantas instâncias do app rodando
+  selector:
+    matchLabels:
+      app: tp2-api # Diz ao deployment quais pods ele deve gerenciar
+  template:
+    metadata:
+      labels:
+        app: tp2-api # Rótulo para os pods (importante para o Service)
+    spec:
+      containers:
+      - name: tp2-api-container
+        # A imagem do push para o DockerHub
+        image: viniciustda/tp2-api:1.0
+        ports:
+        # A porta que o app usa
+        - containerPort: 50031
+        
+        volumeMounts:
+        - name: model-storage
+          
+          mountPath: /model/
+      # Define qual PVC o kubernetes deve usar
+      volumes:
+      - name: model-storage
+        persistentVolumeClaim:
+          # O nome do PVC 
+          claimName: tp2-pvc
