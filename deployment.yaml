@@ -18,7 +18,7 @@ spec:
       containers:
       - name: tp2-api-container
         # A imagem do push para o DockerHub
-        image: viniciustda/tp2-api:1.0
+        image: viniciustda/tp2-api:2.0
         ports:
         # A porta que o app usa
         - containerPort: 50031
