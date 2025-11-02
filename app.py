@@ -62,7 +62,7 @@ def recommend():
 
     response_data = {
         "songs": list(recommendations),
-        "version": "2.0", 
+        "version": "2.1", 
         "model_date": app.model_timestamp 
     }
     
