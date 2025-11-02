@@ -1,7 +1,7 @@
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: tp2-ml-job
+  name: tp2-ml-job-ds2
   namespace: viniciusabel
 spec:
   template:
@@ -13,7 +13,7 @@ spec:
         # A variável de ambiente que diz ao script onde ler o dataset
         env:
         - name: DATASET_PATH
-          value: /data/2023_spotify_ds1.csv
+          value: /data/2023_spotify_ds2.csv
         
         volumeMounts:
         # Onde o modelo será salvo ( PVC)
