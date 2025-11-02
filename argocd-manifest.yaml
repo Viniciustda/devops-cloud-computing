@@ -1,0 +1,271 @@
+metadata:
+  creationTimestamp: "2025-11-01T23:31:13Z"
+  generation: 132
+  managedFields:
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:spec:
+        .: {}
+        f:destination:
+          .: {}
+          f:namespace: {}
+          f:server: {}
+        f:project: {}
+        f:source:
+          .: {}
+          f:path: {}
+          f:repoURL: {}
+        f:syncPolicy:
+          .: {}
+          f:automated: {}
+      f:status:
+        .: {}
+        f:health: {}
+        f:sourceHydrator: {}
+        f:summary: {}
+        f:sync:
+          .: {}
+          f:comparedTo:
+            .: {}
+            f:destination: {}
+            f:source: {}
+    manager: argocd-server
+    operation: Update
+    time: "2025-11-01T23:31:13Z"
+  - apiVersion: argoproj.io/v1alpha1
+    fieldsType: FieldsV1
+    fieldsV1:
+      f:status:
+        f:controllerNamespace: {}
+        f:health:
+          f:lastTransitionTime: {}
+          f:status: {}
+        f:history: {}
+        f:operationState:
+          .: {}
+          f:finishedAt: {}
+          f:message: {}
+          f:operation:
+            .: {}
+            f:initiatedBy:
+              .: {}
+              f:automated: {}
+            f:retry:
+              .: {}
+              f:limit: {}
+            f:sync:
+              .: {}
+              f:revision: {}
+          f:phase: {}
+          f:startedAt: {}
+          f:syncResult:
+            .: {}
+            f:resources: {}
+            f:revision: {}
+            f:source:
+              .: {}
+              f:path: {}
+              f:repoURL: {}
+        f:reconciledAt: {}
+        f:resourceHealthSource: {}
+        f:resources: {}
+        f:sourceType: {}
+        f:summary:
+          f:images: {}
+        f:sync:
+          f:comparedTo:
+            f:destination:
+              f:namespace: {}
+              f:server: {}
+            f:source:
+              f:path: {}
+              f:repoURL: {}
+          f:revision: {}
+          f:status: {}
+    manager: argocd-application-controller
+    operation: Update
+    time: "2025-11-02T01:00:21Z"
+  name: tp2-app
+  namespace: argocd
+  resourceVersion: "12927026"
+  uid: a496d098-dded-4103-9e50-5b388c7afd41
+spec:
+  destination:
+    namespace: viniciusabel
+    server: https://kubernetes.default.svc
+  project: viniciusabel-project
+  source:
+    path: .
+    repoURL: https://github.com/Viniciustda/devops-cloud-computing.git
+  syncPolicy:
+    automated: {}
+status:
+  controllerNamespace: argocd
+  health:
+    lastTransitionTime: "2025-11-02T00:56:55Z"
+    status: Healthy
+  history:
+  - deployStartedAt: "2025-11-01T23:31:14Z"
+    deployedAt: "2025-11-01T23:31:14Z"
+    id: 0
+    initiatedBy:
+      automated: true
+    revision: 46d765e43cb885e6b20098ac6c150e91e7a303b5
+    source:
+      path: .
+      repoURL: https://github.com/Viniciustda/devops-cloud-computing.git
+  - deployStartedAt: "2025-11-01T23:49:06Z"
+    deployedAt: "2025-11-01T23:49:07Z"
+    id: 1
+    initiatedBy:
+      automated: true
+    revision: 1428072a4db4dd71e594e142db2e2a29ccdcd167
+    source:
+      path: .
+      repoURL: https://github.com/Viniciustda/devops-cloud-computing.git
+  - deployStartedAt: "2025-11-02T00:31:59Z"
+    deployedAt: "2025-11-02T00:32:00Z"
+    id: 2
+    initiatedBy:
+      automated: true
+    revision: 59cd061c4400a5a86e994043296f7da0d108f9dc
+    source:
+      path: .
+      repoURL: https://github.com/Viniciustda/devops-cloud-computing.git
+  - deployStartedAt: "2025-11-02T00:36:23Z"
+    deployedAt: "2025-11-02T00:36:24Z"
+    id: 3
+    initiatedBy:
+      automated: true
+    revision: 67acb9d3d66f9799c1a6c86de503ad1a29630079
+    source:
+      path: .
+      repoURL: https://github.com/Viniciustda/devops-cloud-computing.git
+  operationState:
+    finishedAt: "2025-11-02T00:36:24Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        automated: true
+      retry:
+        limit: 5
+      sync:
+        revision: 67acb9d3d66f9799c1a6c86de503ad1a29630079
+    phase: Succeeded
+    startedAt: "2025-11-02T00:36:23Z"
+    syncResult:
+      resources:
+      - group: batch
+        hookPhase: Succeeded
+        images:
+        - viniciustda/tp2-ml:0.1
+        kind: Job
+        message: ignored (requires pruning)
+        name: tp2-ml-job
+        namespace: viniciusabel
+        status: PruneSkipped
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: PersistentVolumeClaim
+        message: persistentvolumeclaim/tp2-pvc unchanged
+        name: tp2-pvc
+        namespace: viniciusabel
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/tp2-api-service unchanged
+        name: tp2-api-service
+        namespace: viniciusabel
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        images:
+        - viniciustda/tp2-api:2.1
+        kind: Deployment
+        message: deployment.apps/tp2-api-deployment unchanged
+        name: tp2-api-deployment
+        namespace: viniciusabel
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: batch
+        hookPhase: Running
+        images:
+        - viniciustda/tp2-ml:0.1
+        kind: Job
+        message: job.batch/tp2-ml-job-ds2 created
+        name: tp2-ml-job-ds2
+        namespace: viniciusabel
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      revision: 67acb9d3d66f9799c1a6c86de503ad1a29630079
+      source:
+        path: .
+        repoURL: https://github.com/Viniciustda/devops-cloud-computing.git
+  reconciledAt: "2025-11-02T01:00:21Z"
+  resourceHealthSource: appTree
+  resources:
+  - health:
+      status: Healthy
+    kind: PersistentVolumeClaim
+    name: tp2-pvc
+    namespace: viniciusabel
+    status: Synced
+    version: v1
+  - health:
+      status: Healthy
+    kind: Service
+    name: tp2-api-service
+    namespace: viniciusabel
+    status: Synced
+    version: v1
+  - group: apps
+    health:
+      status: Healthy
+    kind: Deployment
+    name: tp2-api-deployment
+    namespace: viniciusabel
+    status: Synced
+    version: v1
+  - group: batch
+    health:
+      status: Healthy
+    kind: Job
+    name: tp2-ml-job
+    namespace: viniciusabel
+    requiresPruning: true
+    status: OutOfSync
+    version: v1
+  - group: batch
+    health:
+      status: Healthy
+    kind: Job
+    name: tp2-ml-job-ds2
+    namespace: viniciusabel
+    status: Synced
+    version: v1
+  sourceHydrator: {}
+  sourceType: Directory
+  summary:
+    images:
+    - viniciustda/tp2-api:2.1
+    - viniciustda/tp2-ml:0.1
+  sync:
+    comparedTo:
+      destination:
+        namespace: viniciusabel
+        server: https://kubernetes.default.svc
+      source:
+        path: .
+        repoURL: https://github.com/Viniciustda/devops-cloud-computing.git
+    revision: 67acb9d3d66f9799c1a6c86de503ad1a29630079
+    status: OutOfSync
